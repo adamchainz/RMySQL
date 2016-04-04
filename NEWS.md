@@ -1,3 +1,5 @@
+Adam is the best
+
 # RMySQL 0.11-2 (2016-03-29)
 
 - Use the `DBItest` package for testing (#100).
@@ -13,27 +15,27 @@
  *  RMySQL has been rewritten (essentially from scratch) in C++ with
     Rcpp. This has considerably reduced the amount of code, and allow us to
     take advantage of the more sophisticated memory management tools available in
-    Rcpp. This rewrite should yield some minor performance improvements, but 
+    Rcpp. This rewrite should yield some minor performance improvements, but
     most importantly protect against memory leaks and crashes. It also provides
     a better base for future development.
 
- *  Support for prepared queries: create prepared query with `dbSendQuery()` 
-    and bind values with `dbBind()`. `dbSendQuery()` and `dbGetQuery()` also 
-    support inline parameterised queries, like 
-    `dbGetQuery(mysqlDefault(), "SELECT * FROM mtcars WHERE cyl = :cyl", 
-    params = list(cyl = 4))`. This has no performance benefits but protects you 
+ *  Support for prepared queries: create prepared query with `dbSendQuery()`
+    and bind values with `dbBind()`. `dbSendQuery()` and `dbGetQuery()` also
+    support inline parameterised queries, like
+    `dbGetQuery(mysqlDefault(), "SELECT * FROM mtcars WHERE cyl = :cyl",
+    params = list(cyl = 4))`. This has no performance benefits but protects you
     from SQL injection attacks.
 
  * `dbListFields()` has been removed. Please use `dbColumnInfo()` instead.
 
- * `dbGetInfo()` has been removed. Please use the individual metadata 
+ * `dbGetInfo()` has been removed. Please use the individual metadata
     functions.
 
  *  Information formerly contain in `summary()` methods has now been integrated
     into `show()` methods.
 
  *  `make.db.names()` has been deprecated. Use `dbQuoteIdentifier()` instead.
- 
+
  *  `isIdCurrent()` has been deprecated. Use `dbIsValid()` instead.
 
  *  `dbApply()`, `dbMoreResults()` and `dbNextResults()` have been removed.
@@ -58,7 +60,7 @@
 # Version 0.10.1
 
  *  Fix configure script for OSX 10.6 Snow Leopard
- 
+
  *  Issue in `dbWriteTable()` with temporary files on Windows fixed.
 
 # Version 0.10
@@ -94,26 +96,26 @@
     `dbFetch()` now returns a 0-row data frame (instead of an 0-col data frame)
     if there are no results.
 
- *  Methods no longer automatically close open result sets. This was implemented 
+ *  Methods no longer automatically close open result sets. This was implemented
     inconsistently in a handful of places.
 
  *  `dbBuildTableDefinition()` has been renamed to `mysqlBuildTableDefinition()`.
- 
+
  *  `dbWriteTable()` has been rewritten:
 
     * It quotes field names using `dbQuoteIdentifier()`, rather
       than use a flawed black-list based approach with name munging.
 
-    * It now throws errors on failure, rather than returning FALSE. 
-    
+    * It now throws errors on failure, rather than returning FALSE.
+
     * It will automatically add row names only if they are character, not integer.
-    
+
     * When loading a file from disk, `dbWriteTable()` will no longer
       attempt to guess the correct values for `row.names` and `header` - instead
-      supply them explicitly if the defaults are incorrect. 
-    
-    * When given a zero-row data frame it will just creates the table 
-      definition. 
+      supply them explicitly if the defaults are incorrect.
+
+    * When given a zero-row data frame it will just creates the table
+      definition.
 
  *  Assorted fixes accumulated since last release 3 years ago.
 
